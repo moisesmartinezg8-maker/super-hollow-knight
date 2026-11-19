@@ -1,5 +1,5 @@
-import pygame
-import sys
+import pygame, sys
+from player import *
 
 pygame.init()
 
@@ -28,6 +28,10 @@ speed = 5
 jump_power = -13
 gravity = 0.6
 on_ground = False
+all_sprites = pygame.sprite.Group()
+player = Player(speed)
+all_sprites.add(player)
+
 
 # plataformas
 platforms = [
@@ -66,7 +70,7 @@ while running:
 
     # gravedad
     velocity_y += gravity
-    player.y += velocity_y
+    player_y += velocity_y
 
     on_ground = False
     for ground in platforms:
@@ -111,3 +115,4 @@ while running:
 
 pygame.quit()
 sys.exit()
+
